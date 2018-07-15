@@ -17,8 +17,13 @@ exports.default = [
         isEqual: true,
     },
     {
-        name1: "Alexandra Bozovic",
-        name2: "Bolt A",
+        name1: "Name1 Family1",
+        name2: "Nma1 Fmale1",
         isEqual: false,
+    },
+    {
+        name1: "Name F P",
+        name2: "Patro Family Name",
+        isEqual: true,
     },
 ];

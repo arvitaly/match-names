@@ -6,8 +6,14 @@ export function matchNames(name1: string, name2: string) {
     if (name1 === name2) {
         return true;
     }
-    const words1 = name1.split(" ").map((w) => normalizeWord(w));
-    const words2 = name2.split(" ").map((w) => normalizeWord(w));
+    const words1 = name1
+        .split(" ")
+        .map((w) => normalizeWord(w))
+        .filter((w) => !!w);
+    const words2 = name2
+        .split(" ")
+        .map((w) => normalizeWord(w))
+        .filter((w) => !!w);
     let equalWordsCount = 0;
     let shortEqualCount = 0;
     let strictEqualCount = 0;
@@ -34,7 +40,7 @@ export function matchNames(name1: string, name2: string) {
         compareStringArrays(upperSymbols1, upperSymbols2) &&
         Math.abs(equalWordsCount - words1.length) < 3 &&
         Math.abs(equalWordsCount - words2.length) < 3 &&
-        shortEqualCount < 2 &&
+        shortEqualCount < 3 &&
         strictEqualCount > 0
     ) {
         return true;
