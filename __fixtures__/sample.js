@@ -16,4 +16,9 @@ exports.default = [
         name2: "Name2 BIGGEST",
         isEqual: true,
     },
+    {
+        name1: "Alexandra Bozovic",
+        name2: "Bolt A",
+        isEqual: false,
+    },
 ];
