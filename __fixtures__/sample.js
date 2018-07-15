@@ -11,4 +11,9 @@ exports.default = [
         name2: "Ifamily Ssecond Name1",
         isEqual: true,
     },
+    {
+        name1: "BIG Name2",
+        name2: "Name2 BIGGEST",
+        isEqual: true,
+    },
 ];
