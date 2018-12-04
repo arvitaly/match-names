@@ -6,5 +6,6 @@
         "**/*.js": {
             "when": "$(basename).ts"
         }
-    }
+    },
+    "typescript.tsdk": "node_modules\\typescript\\lib"
 }
