@@ -1,19 +1,21 @@
 import { normalizeWord } from "./normalizeWord";
 import { getUpperSymbols } from "./getUpperSymbols";
 import { compareStringArrays } from "./compareStringArrays";
-
-export function matchNames(name1: string, name2: string) {
+export interface IMatchNamesOptions {
+    ignoreAbbr?: boolean;
+}
+export function matchNames(name1: string, name2: string, options: IMatchNamesOptions = {}) {
     if (name1 === name2) {
         return true;
     }
-    const words1 = name1
-        .split(" ")
-        .map((w) => normalizeWord(w))
-        .filter((w) => !!w);
-    const words2 = name2
-        .split(" ")
-        .map((w) => normalizeWord(w))
-        .filter((w) => !!w);
+    let words1 = name1.split(" ");
+    let words2 = name2.split(" ");
+    if (options.ignoreAbbr) {
+        words1 = words1.filter((w) => w.toUpperCase() !== w);
+        words2 = words2.filter((w) => w.toUpperCase() !== w);
+    }
+    words1 = words1.map((w) => normalizeWord(w)).filter((w) => !!w);
+    words2 = words2.map((w) => normalizeWord(w)).filter((w) => !!w);
     let equalWordsCount = 0;
     let shortEqualCount = 0;
     let strictEqualCount = 0;
