@@ -1,6 +1,6 @@
 {
     "name": "match-names",
-    "version": "0.0.6",
+    "version": "0.0.7",
     "description": "",
     "main": "index.js",
     "scripts": {
@@ -18,12 +18,17 @@
         "url": "https://github.com/arvitaly/match-names/issues"
     },
     "homepage": "https://github.com/arvitaly/match-names#readme",
-    "jest": {},
+    "jest": {
+        "testMatch": [
+            "**/__tests__/**/*.js",
+            "**/?(*.)+(spec|test).js"
+        ]
+    },
     "devDependencies": {
-        "@types/jest": "^23.3.10",
-        "coveralls": "^3.0.2",
-        "jest": "^23.6.0",
-        "tslint": "^5.11.0",
-        "typescript": "^3.2.1"
+        "@types/jest": "^24.0.18",
+        "coveralls": "^3.0.7",
+        "jest": "^24.9.0",
+        "tslint": "^5.20.0",
+        "typescript": "^3.6.4"
     }
 }
