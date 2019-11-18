@@ -50,10 +50,11 @@ export const compareNames = (name1: string, name2: string, ignoreAbbr: boolean) 
             }
         }
     }
+
     if (ignoreAbbr === false) {
         const upperCaseRegexp = new RegExp("[A-Z]", "g");
         const name1UpperSymbols = name1.match(upperCaseRegexp);
-        const name2UpperSymbols = name1.match(upperCaseRegexp);
+        const name2UpperSymbols = name2.match(upperCaseRegexp);
         if (name1UpperSymbols && name2UpperSymbols) {
             for (const symbol1 of name1UpperSymbols) {
                 for (const symbol2 of name2UpperSymbols) {
