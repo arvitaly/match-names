@@ -29,8 +29,8 @@ export const compareNames = (name1: string, name2: string, ignoreAbbr: boolean) 
         .filter((word) => !!word)
         .map((word) => word.toLowerCase());
 
-    const name1Length = name1Words.join("").length;
-    const name2Length = name2Words.join("").length;
+    const name1Length = name1Words.join(" ").length;
+    const name2Length = name2Words.join(" ").length;
     let name1Quality = 0;
     let name2Quality = 0;
     for (const word1 of name1Words) {
@@ -56,11 +56,15 @@ export const compareNames = (name1: string, name2: string, ignoreAbbr: boolean) 
         const name1UpperSymbols = name1.match(upperCaseRegexp);
         const name2UpperSymbols = name2.match(upperCaseRegexp);
         if (name1UpperSymbols && name2UpperSymbols) {
-            for (const symbol1 of name1UpperSymbols) {
-                for (const symbol2 of name2UpperSymbols) {
-                    if (symbol1 === symbol2) {
+            const used1: number[] = [];
+            const used2: number[] = [];
+            for (const [key1, symbol1] of name1UpperSymbols.entries()) {
+                for (const [key2, symbol2] of name2UpperSymbols.entries()) {
+                    if (symbol1 === symbol2 && used1.indexOf(key1) === -1 && used2.indexOf(key2) === -1) {
                         name1Quality += (1 / name1Length) * 100;
                         name2Quality += (1 / name2Length) * 100;
+                        used1.push(key1);
+                        used2.push(key2);
                     }
                 }
             }
