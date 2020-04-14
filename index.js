@@ -2,7 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.matchNames = (name1, name2, params = { quality: 75, ignoreAbbr: false }) => {
     const result = exports.compareNames(name1, name2, params.ignoreAbbr);
-    return result.name1Quality >= params.quality || result.name2Quality >= params.quality;
+    return (result.name1Quality >= params.quality ||
+        result.name2Quality >= params.quality);
 };
 exports.compareNames = (name1, name2, ignoreAbbr) => {
     const result = {
@@ -59,7 +60,9 @@ exports.compareNames = (name1, name2, ignoreAbbr) => {
             const used2 = [];
             for (const [key1, symbol1] of name1UpperSymbols.entries()) {
                 for (const [key2, symbol2] of name2UpperSymbols.entries()) {
-                    if (symbol1 === symbol2 && used1.indexOf(key1) === -1 && used2.indexOf(key2) === -1) {
+                    if (symbol1 === symbol2 &&
+                        used1.indexOf(key1) === -1 &&
+                        used2.indexOf(key2) === -1) {
                         name1Quality += (1 / name1Length) * 100;
                         name2Quality += (1 / name2Length) * 100;
                         used1.push(key1);
